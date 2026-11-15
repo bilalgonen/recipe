@@ -53,12 +53,12 @@ npm run build    # typecheck + production build to dist/
 npm run preview  # preview the build
 ```
 
-## Deploy to Cloudflare Pages
+## Deploy to Cloudflare
+
+The app is a static SPA served with Cloudflare Workers static assets. [`wrangler.jsonc`](wrangler.jsonc) points at `dist/` and sets `not_found_handling: "single-page-application"`, so deep links such as `/recipe/5` fall back to `index.html` (no `_redirects` file needed).
 
 | Setting | Value |
 | --- | --- |
 | Build command | `npm run build` |
-| Build output directory | `dist` |
-| Environment variable | `NODE_VERSION=22` |
-
-`public/_redirects` provides the single-page-app fallback so deep links such as `/recipe/5` work.
+| Deploy command | `npx wrangler deploy` |
+| Environment variable | `NODE_VERSION=22` (optional) |
