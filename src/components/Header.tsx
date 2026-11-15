@@ -1,9 +1,9 @@
-import { ChefHat, Heart } from 'lucide-react'
+import { ChefHat, Heart, Info } from 'lucide-react'
 import { Link } from 'react-router'
 import { useFavorites } from '../hooks/useFavorites'
 import { ThemeToggle } from './ThemeToggle'
 
-export function Header() {
+export function Header({ onAbout }: { onAbout: () => void }) {
   const { ids } = useFavorites()
   return (
     <header className="sticky top-0 z-20 border-b border-stone-200 bg-stone-50/85 backdrop-blur dark:border-stone-800 dark:bg-stone-950/85">
@@ -23,6 +23,14 @@ export function Header() {
             Favorites
             <span className="rounded-full bg-stone-200 px-2 text-xs dark:bg-stone-800">{ids.size}</span>
           </Link>
+          <button
+            type="button"
+            onClick={onAbout}
+            className="flex h-10 items-center gap-2 rounded-full px-3 text-sm font-medium text-stone-600 transition hover:bg-stone-200 dark:text-stone-300 dark:hover:bg-stone-800"
+          >
+            <Info className="size-4" />
+            About
+          </button>
           <ThemeToggle />
         </nav>
       </div>

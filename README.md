@@ -2,11 +2,15 @@
 
 A fast, responsive recipe browser that helps people **find something to cook** from a catalogue of recipes, whether they know the dish name, a dietary tag, or only the ingredients in their fridge. Data comes from the free [DummyJSON Recipes API](https://dummyjson.com/docs/recipes).
 
+**Live demo:** https://recipe.bilalgonen.workers.dev
+
+**Developer:** [bilalgonen.com](https://bilalgonen.com)
+
 ![Home page with search, filters and recipe cards](docs/screenshots/1.png)
 
 ## What the app helps you do
 
-- **Find recipes the way you think about food.** Search by recipe name (*pizza*), by tag (*dessert*, *vegetarian*) or by ingredient (*garlic*, *basil*), or search all three at once. Matches are highlighted, and cards show which ingredient matched.
+- **Find recipes the way you think about food.** Search by recipe name (_pizza_), by tag (_dessert_, _vegetarian_) or by ingredient (_garlic_, _basil_), or search all three at once. Matches are highlighted, and cards show which ingredient matched.
 - **Narrow down quickly.** Combine filters for cuisine, meal type and difficulty, and sort by top rated, quickest, fewest calories or A–Z.
 
   ![Combined filters (Italian, Appetizer, Easy) with the sort menu open](docs/screenshots/3.png)
@@ -21,18 +25,18 @@ A fast, responsive recipe browser that helps people **find something to cook** f
 
 ## Tech stack
 
-| Area | Technology |
-| --- | --- |
-| UI | **React 19**, **TypeScript** (strict) |
-| Build tooling | **Vite 8** |
-| Styling | **Tailwind CSS 4** (CSS-first config, dark mode variant) |
-| Data fetching & caching | **TanStack Query** |
-| Routing | **React Router** (route-level code splitting, URL-synced filters) |
-| Icons | **lucide-react** |
-| Testing | **Vitest**, **React Testing Library**, jsdom |
-| Linting | **oxlint** |
-| Data source | [DummyJSON Recipes API](https://dummyjson.com/docs/recipes) |
-| Hosting | **Cloudflare Pages** |
+| Area                    | Technology                                                        |
+| ----------------------- | ----------------------------------------------------------------- |
+| UI                      | **React 19**, **TypeScript** (strict)                             |
+| Build tooling           | **Vite 8**                                                        |
+| Styling                 | **Tailwind CSS 4** (CSS-first config, dark mode variant)          |
+| Data fetching & caching | **TanStack Query**                                                |
+| Routing                 | **React Router** (route-level code splitting, URL-synced filters) |
+| Icons                   | **lucide-react**                                                  |
+| Testing                 | **Vitest**, **React Testing Library**, jsdom                      |
+| Linting                 | **oxlint**                                                        |
+| Data source             | [DummyJSON Recipes API](https://dummyjson.com/docs/recipes)       |
+| Hosting                 | **Cloudflare Pages**                                              |
 
 ## Design notes
 
@@ -57,8 +61,8 @@ npm run preview  # preview the build
 
 The app is a static SPA served with Cloudflare Workers static assets. [`wrangler.jsonc`](wrangler.jsonc) points at `dist/` and sets `not_found_handling: "single-page-application"`, so deep links such as `/recipe/5` fall back to `index.html` (no `_redirects` file needed).
 
-| Setting | Value |
-| --- | --- |
-| Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy` |
+| Setting              | Value                        |
+| -------------------- | ---------------------------- |
+| Build command        | `npm run build`              |
+| Deploy command       | `npx wrangler deploy`        |
 | Environment variable | `NODE_VERSION=22` (optional) |
